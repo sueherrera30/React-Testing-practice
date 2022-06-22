@@ -1,14 +1,19 @@
 import React from 'react';
-import { render, cleanup, fireEvent } from 'react-testing-library';
-import MovieForm from './MovieForm';
+import { render, cleanup } from 'react-testing-library';
+// import MovieForm from './MovieForm';
+import NewMovie from './NewMovie';
 
 afterEach(cleanup);
 
-test('<MovieForm />', () => {
-  const { getByTestId, getByText } = render(<MovieForm />);
-  expect(getByTestId('movie-input').tagName).toBe('INPUT');
-  const submitbutton = getByText('Submit');
-  expect(submitbutton).toBeTruthy();
-  fireEvent.click(submitbutton);
-  expect(getByText('congratulations, form sent!').tagName).toBe('P');
+// as integration:
+test('<NewMovie />', () => {
+  const { queryByTestId, getByText, getByTestId } = render(<NewMovie />);
+  expect(getByText('New Movie').tagName).toBe('H1');
+  expect(getByTestId('page-title').textContent).toBe('New Movie');
+  expect(queryByTestId('movie-form')).toBeTruthy();
+});
+
+test('<NewMovie /> test snapshot', () => {
+  const { container } = render(<NewMovie />);
+  expect(container.firstChild).toMatchSnapshot();
 });

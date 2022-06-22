@@ -14,7 +14,7 @@ export default class MovieForm extends Component {
   render() {
     const { message } = this.state;
     return (
-      <form>
+      <form data-testid="movie-form">
         <input type="text" data-testid="movie-input" />
         <button onClick={this.showMessage}>Submit</button>
         {
