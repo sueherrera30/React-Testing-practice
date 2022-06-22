@@ -6,12 +6,7 @@ export default class Counter extends Component {
       count: 0,
       testList: [1, 2, 3, 4, 5],
     }
-
-    // handleCount = () => {
-    //   this.setState(prevState => ({
-    //     count: prevState + 1,
-    //   }));
-    // }
+    
     handleCount = () => {
       this.setState(prevState => ({
         count: prevState.count + 1,
