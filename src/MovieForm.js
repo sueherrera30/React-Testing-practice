@@ -2,29 +2,53 @@ import React, { Component } from 'react';
 
 export default class MovieForm extends Component {
   state = {
-    message: false,
-  };
-
-  showMessage = () => {
-    this.setState(() => ({
-      message: true,
-    }));
+    text: '',
   };
 
   render() {
-    const { message } = this.state;
+    const { text } = this.state;
+    const { sumbitForm } = this.props;
     return (
-      <form data-testid="movie-form">
+      <form
+        data-testid="movie-form"
+        onSubmit={() => sumbitForm({
+          text,
+        })}
+      >
         <input type="text" data-testid="movie-input" />
-        <button onClick={this.showMessage}>Submit</button>
-        {
-          message && (
-          <p>
-congratulations, form sent!
-          </p>
-          )
-        }
+        <button type="submit">
+Submit
+        </button>
       </form>
     );
   }
 }
+
+// export default class MovieForm extends Component {
+//   state = {
+//     message: false,
+//   };
+
+//   showMessage = () => {
+//     this.setState(() => ({
+//       message: true,
+//     }));
+//   };
+
+//   render() {
+//     const { message } = this.state;
+//     return (
+//       <form data-testid="movie-form">
+//         <input type="text" data-testid="movie-input" />
+//         <button onClick={this.showMessage}>Submit</button>
+//         {
+//           message && (
+//           <p>
+// congratulations, form sent!
+//           </p>
+//           )
+//         }
+//       </form>
+//     );
+//   }
+// }

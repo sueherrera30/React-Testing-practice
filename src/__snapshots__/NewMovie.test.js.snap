@@ -14,7 +14,9 @@ exports[`<NewMovie /> test snapshot 1`] = `
       type="text"
       data-testid="movie-input"
     />
-    <button>
+    <button
+      type="submit"
+    >
       Submit
     </button>
   </form>
