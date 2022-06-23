@@ -10,10 +10,16 @@ exports[`<NewMovie /> test snapshot 1`] = `
   <form
     data-testid="movie-form"
   >
-    <input
-      type="text"
-      data-testid="movie-input"
-    />
+    <label
+      for="text"
+    >
+      Text
+      <input
+        type="text"
+        data-testid="movie-input"
+        id="text"
+      />
+    </label>
     <button
       type="submit"
     >
