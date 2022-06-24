@@ -3,31 +3,45 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import Movie from './Movie';
 
-const API_KEY = '6f79e8d3eb9977defc0e43adbee7b0bc';
+// const API_KEY = '6f79e8d3eb9977defc0e43adbee7b0bc';
 class MoviesList extends PureComponent {
   state = {
     movies: [],
   };
 
+  // eslint-disable-next-line react/sort-comp
   async componentDidMount() {
     try {
       const res = await fetch(
-        `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`,
+        // `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`,
+        // al no tener api key:
+        'https://api.themoviedb.org/3/discover/movie?api_key=$&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1',
       );
       const movies = await res.json();
-      this.setState({
-        movies: movies.results,
-      });
+      if (movies.success) {
+        this.setState({
+          movies: movies.results,
+        });
+      }
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   }
 
   render() {
     const { movies } = this.state;
+    //     if (movies.length === 0) {
+    //       return (
+    //         <h1 data-testid="error">
+    // this request is broken D:
+    //         </h1>
+    //       );
+    //     }
     if (movies < 1) {
       return (
-        <h1 data-testid="loading">LOADING...</h1>
+        <h1 data-testid="loading">
+LOADING...
+        </h1>
       );
     }
     return (
