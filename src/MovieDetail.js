@@ -20,7 +20,7 @@ class MovieDetail extends Component {
         movie,
       });
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   }
 
@@ -35,8 +35,8 @@ class MovieDetail extends Component {
           </Overdrive>
           <div>
             <h1 data-testid="movie-title">{movie.title}</h1>
-            <h3>{movie.release_date}</h3>
-            <p>{movie.overview}</p>
+            <h3 data-testid="movie-date">{movie.release_date}</h3>
+            <p data-testid="movie-review">{movie.overview}</p>
           </div>
         </MovieInfo>
       </MovieWrapper>
