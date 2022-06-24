@@ -1,7 +1,7 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { render, cleanup } from 'react-testing-library';
-import Movie from './Movie';
+import Movie, { POSTER_PATH } from './Movie';
 
 console.error = jest.fn();
 
@@ -21,10 +21,11 @@ test('<Movie/>', () => {
 });
 
 test('<Movie/>', () => {
-  render(
+  const { debug, getByTestId } = render(
     <MemoryRouter>
       <Movie movie={movie} />
     </MemoryRouter>,
   );
   expect(console.error).not.toHaveBeenCalled();
+  expect(getByTestId('movie-link').getAttribute('href')).toBe(`/${movie.id}`);
 });
